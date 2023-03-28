@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>기프티콘 반띵 이벤트 추첨</title>
+    <link rel="stylesheet" href="giftcard_v2_styles.css"> <!-- css 추가 -->
+    <style>
+        body {
+            font-family: "Arial", sans-serif;
+            background-color: #f9f9f9;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #4CAF50;
+            font-size: 36px;
+            margin-top: 50px;
+        }
+
+        label {
+            font-size: 18px;
+            color: #666;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        button {
+            font-size: 16px;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #nameInputs {
+            display: flex;
+            flex-direction: column;
+        }
+
+        #result {
+            font-size: 24px;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        img {
+            max-width: 300px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>기프티콘 반띵 이벤트 추첨!</h1>
+    <label>몇 명인지 숫자로 입력해주세요!</label>
+    <input type="number" id="numOfPeople" min="1">
+    <button id="generateInputFields">이름 입력 칸 생성</button>
+    <div id="nameInputs"></div>
+    <button id="startLottery" style="display:none">추첨 개시</button>
+    <p id="result"></p>
+    <img src="https://c1.staticflickr.com/3/2903/33102384274_756c7b697e_b.jpg" alt="Funny lottery image" />
+
+    <script src="giftcard_v2_scripts.js"></script>
+    <!-- 기존 html script를 js로 변환
+    <script>
+        const numOfPeopleInput = document.getElementById("numOfPeople");
+        const generateInputFieldsButton = document.getElementById("generateInputFields");
+        const nameInputsDiv = document.getElementById("nameInputs");
+        const startLotteryButton = document.getElementById("startLottery");
+        const resultParagraph = document.getElementById("result");
+
+        generateInputFieldsButton.addEventListener("click", () => {
+            const numOfPeople = parseInt(numOfPeopleInput.value);
+            nameInputsDiv.innerHTML = "";
+            for (let i = 1; i <= numOfPeople; i++) {
+                const nameLabel = document.createElement("label");
+                nameLabel.textContent = `n번째 중 ${i}번째 사람 이름 입력`;
+                nameInputsDiv.appendChild(nameLabel);
+                const nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.classList.add("name");
+                nameInputsDiv.appendChild(nameInput);
+            }
+            startLotteryButton.style.display = "block";
+        });
+
+        startLotteryButton.addEventListener("click", () => {
+            resultParagraph.textContent = "추첨 중입니다...";
+            const names = Array.from(document.getElementsByClassName("name")).map(input => input.value);
+
+            setTimeout(() => {
+                const winnerIndex = Math.floor(Math.random() * names.length);
+                const winner = names[winnerIndex];
+                resultParagraph.textContent = `축하합니다! 당첨자는 ${winner}입니다!`;
+            }, 3000);
+        });
+    </script>
+    -->
+</body>
+</html>

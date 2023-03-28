@@ -1,0 +1,112 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>My First Web Page</title>
+        <script>
+            function hello() {
+                alert("Hello World!");
+                console.log("Hello World!");
+            }
+        </script>
+    </head>
+    
+    <body>
+        <h1 id="title">My First Web Page</h1>
+        <p>My first paragraph.</p>
+        <button onClick="hello()">Click Me!</button>
+        <button onclick="showGugudan()">구구단</button>
+        <button onclick="showFibonacci()">피보나치 수열</button>
+        <button onclick="showStarPyramid()">별 피라미드</button>
+        <button onclick="showLCM()">최소 공배수</button>
+        <button onclick="showGCD()">최대 공약수</button>
+
+
+        <div id="output"></div>
+
+        <script>
+          function showGugudan() {
+            const num = prompt("몇 단을 실행할까요?", "1");
+            let result = "";
+      
+            for (let i = 1; i <= 9; i++) {
+              result += `${num} x ${i} = ${num * i} <br>`;
+            }
+      
+            document.getElementById("output").innerHTML = result;
+          }
+      
+          function showFibonacci() {
+            const num = prompt("몇 항까지 실행할까요?", "1");
+            let a = 0, b = 1, c, result = "";
+      
+            for (let i = 0; i < num; i++) {
+              result += a + ", ";
+              c = a + b;
+              a = b;
+              b = c;
+            }
+      
+            document.getElementById("output").innerHTML = result;
+          }
+      
+          function showStarPyramid() {
+            const num = prompt("몇 층까지 쌓을까요?", "1");
+            let result = "";
+      
+            for (let i = 1; i <= num; i++) {
+                for (let j = 1; j <= num - i; j++) {
+                result += "&nbsp;";
+                }
+                for (let k = 1; k <= i * 2 - 1; k++) {
+                result += "*";
+                }
+                result += "<br>";
+            }
+      
+            document.getElementById("output").innerHTML = result;
+          }
+      
+          function showLCM() {
+            const num1 = prompt("첫 번째 숫자 입력:", "1");
+            const num2 = prompt("두 번째 숫자 입력:", "1");
+            const lcm = calculateLCM(num1, num2);
+            document.getElementById("output").innerHTML = `최소 공배수는 ${lcm}입니다.`;
+          }
+      
+          function showGCD() {
+            const num1 = prompt("첫 번째 숫자 입력:", "1");
+            const num2 = prompt("두 번째 숫자 입력:", "1");
+            const gcd = calculateGCD(num1, num2);
+            document.getElementById("output").innerHTML = `최대 공약수는 ${gcd}입니다.`;
+          }
+      
+          function calculateLCM(num1, num2) {
+            const max = Math.max(num1, num2);
+            let lcm = max;
+      
+            while (true) {
+              if (lcm % num1 === 0 && lcm % num2 === 0) {
+                break;
+              }
+              lcm += max;
+            }
+      
+            return lcm;
+          }
+
+          function calculateGCD(num1, num2) {
+            let a = num1;
+            let b = num2;
+
+            while (b !== 0) {
+                const r = a % b;
+                a = b;
+                b = r;
+            }
+
+            return a;
+            }
+
+        </script>
+    </body>
+</html>
