@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Sample</title>
+    <script>
+      window.onload = function () {
+        // DOM 조작하기
+        let statusNum = 1;
+        const myParagraph = document.getElementById("my-paragraph");
+
+        myParagraph.innerHTML = "This is a new paragraph.";
+        myParagraph.style.color = "red"; 
+        // 실제로는 위에 때문에 빨간색이 된게 아님. 실제로는 밑에 로딩된 거 땡겨온거.
+
+        // 이벤트 처리 방법
+        const addButton = document.getElementById("add-button");
+
+        addButton.addEventListener("click", function () {
+          const actionStatus = document.getElementById("action-status");
+
+          let clickStatus = document.createElement("div");
+          clickStatus.setAttribute("class", "status");
+          clickStatus.innerHTML = String(statusNum) + ": Button clicked!";
+          statusNum += 1;
+          //숫자만 하면 에러 뜸. 숫자를 String으로 바꾸고 더하기.
+          //명시적으로 String으로 해줘야 side effect 줄일 수 있음.
+          //여기까지 메모리 만들어 놓고. 밑에 append Child 해야 밑에 Action Status 생김.
+
+          actionStatus.appendChild(clickStatus);
+          //actionStatus: Child append
+        });
+
+
+        const delButton = document.getElementById("del-button");
+        //getElement
+
+        delButton.addEventListener("click", function () {
+          const status = document.getElementsByClassName("status");
+          //getElement's'
+          status[status.length - 1].remove();
+          statusNum -= 1;
+        });
+      };
+    </script>
+  </head>
+  <body>
+    <h1>JavaScript Sample</h1>
+
+    <p id="my-paragraph">This is a sample paragraph.</p>
+    <button id="add-button">Add Status</button>
+    <button id="del-button">Delete Status</button>
+    <p id="action-status">Action Status:</p>
+  </body>
+</html>
